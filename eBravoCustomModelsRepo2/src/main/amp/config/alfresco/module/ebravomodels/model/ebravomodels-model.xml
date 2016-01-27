@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="earq:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Document Model for Repo Extension Contrado</description>
+	<author>Ricardo Simião</author>
+	<version>1.0</version>
+
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco System Model Definitions -->
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+	</imports>
+
+	<!-- Custom namespace for your domain -->
+	<namespaces>
+		<namespace uri="http://www.earqconsultoria.com/model/content/1.0"
+			prefix="earq" />
+	</namespaces>
+
+
+
+	<constraints>
+		<constraint name="earq:statusprocessolist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<value>Em andamento</value>
+					<value>Arquivo Morto</value>
+					<value>Outro</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+
+
+
+
+	<types>
+
+		<type name="earq:processo">
+			<title>Processo</title>
+			<parent>cm:folder</parent>
+			<properties>
+				<!-- <property name="earq:numero"> <type>d:text</type> </property> -->
+				<property name="earq:processo">
+					<type>d:text</type>
+				</property>
+				<property name="earq:classe">
+					<type>d:text</type>
+				</property>
+				<property name="earq:controle">
+					<type>d:text</type>
+				</property>
+				<property name="earq:juiz">
+					<type>d:text</type>
+				</property>
+				<property name="earq:tribunal">
+					<type>d:text</type>
+				</property>
+				<property name="earq:origem">
+					<type>d:text</type>
+				</property>
+				<property name="earq:parte">
+					<type>d:text</type>
+				</property>
+				<property name="earq:assunto">
+					<type>d:text</type>
+				</property>
+				<property name="earq:status">
+					<type>d:text</type>
+					<constraints>
+						<constraint ref="earq:statusprocessolist" />
+					</constraints>
+				</property>
+				<property name="earq:datadistribuicao">
+					<type>d:date</type>
+				</property>
+				<property name="earq:valor">
+					<type>d:text</type>
+				</property>
+			</properties>
+			<mandatory-aspects>
+				<aspect>cm:generalclassifiable</aspect>
+			</mandatory-aspects>
+		</type>
+
+		<type name="earq:contrato">
+			<title>Contrato</title>
+			<parent>cm:folder</parent>
+			<properties>
+				<property name="earq:razao">
+					<type>d:text</type>
+				</property>
+				<property name="earq:fantasia">
+					<type>d:text</type>
+				</property>
+				<property name="earq:cnpj">
+					<type>d:text</type>
+				</property>
+				<property name="earq:dataassinatura">
+					<type>d:date</type>
+				</property>
+				<property name="earq:vigencia">
+					<type>d:date</type>
+				</property>
+				<property name="earq:numeroproposta">
+					<type>d:text</type>
+				</property>
+				<property name="earq:numerocontrato">
+					<type>d:text</type>
+				</property>
+				<property name="earq:valoratual">
+					<type>d:text</type>
+				</property>
+				<property name="earq:confidencial">
+					<type>d:boolean</type>
+				</property>
+			</properties>
+			<mandatory-aspects>
+				<aspect>cm:generalclassifiable</aspect>
+			</mandatory-aspects>
+		</type>
+
+
+		<type name="earq:prontuario">
+			<title>Prontuario</title>
+			<parent>cm:folder</parent>
+			<properties>
+				<!-- Dados cadastrais -->
+				<property name="earq:admissao">
+					<type>d:date</type>
+				</property>
+				<property name="earq:desligamento">
+					<type>d:date</type>
+				</property>
+				<property name="earq:ramal">
+					<type>d:text</type>
+				</property>
+				<property name="earq:centrodecusto">
+					<type>d:text</type>
+				</property>
+				<property name="earq:unidadetrabalho">
+					<type>d:text</type>
+				</property>
+				<property name="earq:afastado">
+					<type>d:boolean</type>
+					<default>false</default>
+				</property>
+				<property name="earq:inativo">
+					<type>d:boolean</type>
+					<default>false</default>
+				</property>
+				<property name="earq:cpf">
+					<type>d:text</type>
+				</property>
+				<property name="earq:rg">
+					<type>d:text</type>
+				</property>
+				<property name="earq:ctps">
+					<type>d:text</type>
+				</property>
+				<property name="earq:pis">
+					<type>d:text</type>
+				</property>
+				<property name="earq:cnh">
+					<type>d:text</type>
+				</property>
+				<property name="earq:categcnh">
+					<type>d:text</type>
+				</property>
+				<property name="earq:venccnh">
+					<type>d:date</type>
+				</property>
+				<property name="earq:endereco">
+					<type>d:text</type>
+				</property>
+				<property name="earq:telefoneresidencial">
+					<type>d:text</type>
+				</property>
+				<property name="earq:funcao">
+					<type>d:text</type>
+				</property>
+				<property name="earq:nacionalidade">
+					<type>d:text</type>
+				</property>
+				<property name="earq:estadocivil">
+					<type>d:text</type>
+				</property>
+				<property name="earq:datanascimento">
+					<type>d:date</type>
+				</property>
+			</properties>
+			<mandatory-aspects>
+				<aspect>cm:generalclassifiable</aspect>
+			</mandatory-aspects>
+		</type>
+	</types>
+
+</model>
